@@ -1,0 +1,35 @@
+﻿@model List<Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered mt-2">
+    <tr>
+        <th>Id</th>
+        <th>Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.KategoriId</td>
+            <td>@item.KategoriAd</td>
+            <td><a href="/Kategori/KategoriSil/@item.KategoriId" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+            <td><a href="/Kategori/KategoriGuncelle/@item.KategoriId"class="btn btn-outline-success"><i class="fas fa-magic"></i></a></td>
+
+        </tr>
+    }
+
+
+</table>
+<a href="@Url.Action("KategoriEkle","Kategori")" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Yeni Kategori Ekle"><i class="fas fa-plus"></i></a>
+
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    }
