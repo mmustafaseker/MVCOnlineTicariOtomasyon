@@ -1,0 +1,47 @@
+﻿@model List<Urun>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>ÜRÜN</th>
+        <th>MARKA</th>
+        <th>STOK</th>
+        <th>ALIŞ FİYATI</th>
+        <th>SATIŞ FİYATI</th>
+        <th>KATEGORİ</th>
+        <th>GÖRSEL</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UrunId</td>
+            <td>@item.UrunAd</td>
+            <td>@item.Marka</td>
+            <td>@item.Stok</td>
+            <td>@item.AlisFiyati ₺</td>
+            <td>@item.SatisFiyati</td>
+            <td>@item.Kategori.KategoriAd</td>
+            <td>@item.UrunGorsel</td>
+            <td><a href="/Urun/UrunSil/@item.UrunId" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+            <td><a href="/Urun/UrunGuncelle/@item.UrunId" class="btn btn-outline-success"><i class="fas fa-magic"></i></a></td>
+        </tr>
+    }
+
+</table>
+<a href="@Url.Action("UrunEkle","Urun")" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Yeni Urun Ekle"><i class="fas fa-plus"></i></a>
+
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}

@@ -33,6 +33,6 @@ namespace MVCOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string TeslimAlan { get; set; }
-        public ICollection<FaturaKalem> FaturaKalems { get; set; }
+        public virtual ICollection<FaturaKalem> FaturaKalems { get; set; }
     }
 }
