@@ -1,0 +1,39 @@
+﻿@model List<Departman>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered mt-2">
+    <tr>
+        <th>#</th>
+        <th>DEPARTMAN ADI</th>
+        <th>DEPARTMAN Durum</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        <th>DETAYLAR</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DepartmanId</td>
+            <td>@item.DepartmanAd</td>
+            <td>@item.Durum</td>
+            <td><a href="/Departman/DepartmanSil/@item.DepartmanId" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+            <td><a href="/Departman/DepartmanGetir/@item.DepartmanId" class="btn btn-outline-success"><i class="fas fa-magic"></i></a></td>
+            <td><a href="/Departman/DepartmanDetay/@item.DepartmanId" class="btn btn-outline-info"><i class="fas fa-expand"></i></a></td>
+
+        </tr>
+    }
+
+
+</table>
+<a href="@Url.Action("DepartmanEkle","Departman")" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Yeni Kategori Ekle"><i class="fas fa-plus"></i></a>
+
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}

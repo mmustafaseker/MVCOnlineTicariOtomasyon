@@ -1,0 +1,28 @@
+﻿@model Departman
+@{
+    ViewBag.Title = "DepartmanGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Departma Guncelleme</h2>
+<br />
+
+@using (Html.BeginForm("DepartmanGuncelle", "Departma", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Departman Adı")
+        @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.DepartmanId)
+    </div>
+    <br />
+    <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Güncelle"><i class="fas fa-clipboard"></i></button>
+}
+
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}

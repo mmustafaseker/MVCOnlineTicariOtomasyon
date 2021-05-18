@@ -1,0 +1,24 @@
+﻿@model Departman
+@{
+    ViewBag.Title = "DepartmanEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Departman Sayfası</h2>
+<br />
+
+<form class="form-group" method="post">
+    @Html.Label("Departman Adı")
+    @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+    @Html.AntiForgeryToken()
+    <br />
+    <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Kaydet"><i class="fas fa-clipboard"></i></button>
+</form>
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}

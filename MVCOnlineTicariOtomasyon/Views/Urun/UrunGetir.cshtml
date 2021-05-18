@@ -1,0 +1,48 @@
+﻿@model Urun
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Urun Güncelle</h2>
+<br />
+
+@using (Html.BeginForm("UrunGuncelle", "Urun", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.UrunId)
+    @Html.Label("Urun Ad")
+    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    <br />
+    @Html.Label("Urun Marka")
+    @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+    <br />
+    @Html.Label("Urun Stok")
+    @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+    <br />
+    @Html.Label("Urun Alış Fiyat")
+    @Html.TextBoxFor(x => x.AlisFiyati, new { @class = "form-control" })
+    <br />
+    @Html.Label("Urun Satış Fiyat")
+    @Html.TextBoxFor(x => x.SatisFiyati, new { @class = "form-control" })
+    <br />
+    @Html.Label("Urun Kategorisi")
+    @*@Html.TextBoxFor(x => x.KategoriId, new { @class = "form-control" })*@
+    @Html.DropDownListFor(x => x.KategoriId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.Label("Urun Gorsel")
+    @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+    <br />
+    @Html.Label("Urun Durum")
+    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Kaydet"><i class="fas fa-clipboard"></i></button>
+}
+
+
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}
