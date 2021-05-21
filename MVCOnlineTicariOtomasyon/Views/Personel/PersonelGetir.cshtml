@@ -1,0 +1,40 @@
+﻿@model Personel
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Personel Güncelle</h2>
+<br />
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.PersonelId)
+        @Html.Label("Personel Ad")
+        @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+        <br />
+        @Html.Label("Personel Soyad")
+        @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Personel Gorsel")
+        @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Personel Departman")
+        @*@Html.TextBoxFor(x => x.KategoriId, new { @class = "form-control" })*@
+        @Html.DropDownListFor(x => x.DepartmanId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        <br />
+
+        <br />
+        <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Güncelle"><i class="fas fa-clipboard"></i></button>
+
+    </div>
+}
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}
