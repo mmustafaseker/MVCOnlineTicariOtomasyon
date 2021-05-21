@@ -1,0 +1,41 @@
+﻿@model List<Cariler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>AD</th>
+        <th>SOYAD</th>
+        <th>ŞEHİR</th>
+        <th>MAİL</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        <th>SATIŞ GEÇMİŞİ</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.CariId</td>
+            <td>@x.CariAd</td>
+            <td>@x.CariSoyad</td>
+            <td>@x.CariSehir</td>
+            <td>@x.CariMail</td>
+            <td><a href="/Cari/CariSil/@x.CariId" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+            <td><a href="/Cari/CariGetir/@x.CariId" class="btn btn-outline-success"><i class="fas fa-magic"></i></a></td>
+            <td><a href="/Cari/MusteriSatis/@x.CariId" class="btn btn-outline-info"><i class="fas fa-expand"></i></a></td>
+        </tr>
+    }
+</table>
+
+<a href="@Url.Action("CariEkle","Cari")" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Yeni Kategori Ekle"><i class="fas fa-plus"></i></a>
+
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}
