@@ -23,7 +23,7 @@ namespace MVCOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "Varchar")]
         [StringLength(250)]
         public string PersonelGorsel { get; set; }
-
+        public bool durum { get; set; } = true;
         public virtual ICollection<SatisHaraket> SatisHarakets { get; set; }
         public int DepartmanId { get; set; }
         public virtual Departman  Departman { get; set; }

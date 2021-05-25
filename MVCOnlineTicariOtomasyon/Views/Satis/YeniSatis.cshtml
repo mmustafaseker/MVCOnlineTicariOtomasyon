@@ -1,0 +1,39 @@
+﻿@model SatisHaraket
+@{
+    ViewBag.Title = "YeniSatis";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Satış Sayfası</h2>
+<br />
+
+<form class="form-group" method="post">
+    @Html.Label("Ürün")
+    @Html.DropDownListFor(x => x.UrunId, (List<SelectListItem>)ViewBag.urun, new { @class = "form-control" })
+    <br />
+    @Html.Label("Cariler")
+    @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.cari, new { @class = "form-control" })
+    <br />
+    @Html.Label("Personel")
+    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.personel, new { @class = "form-control" })
+    <br />
+    @Html.Label("Adet")
+    @Html.TextBoxFor(x => x.Adet, new { @class = "form-control" })
+    <br />
+    @Html.Label(" Fiyat")
+    @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control" })
+    <br />
+    @Html.Label("Toplam Tutar")
+    @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Satış Yap"><i class="fas fa-clipboard"></i></button>
+</form>
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}
+

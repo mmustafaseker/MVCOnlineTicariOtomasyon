@@ -12,7 +12,7 @@ namespace MVCOnlineTicariOtomasyon.Controllers
         Context db = new Context();
         public ActionResult Index()
         {
-            var degerler = db.Personels.ToList();
+            var degerler = db.Personels.Where(x=>x.durum==true).ToList();
             return View(degerler);
         }
         public ActionResult PersonelEkle()
@@ -54,6 +54,15 @@ namespace MVCOnlineTicariOtomasyon.Controllers
             prsn.PersonelSoyad = personel.PersonelSoyad;
             prsn.PersonelGorsel = personel.PersonelGorsel;
             prsn.DepartmanId = personel.DepartmanId;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult PersonelSil(int id)
+        {
+            var personelId = db.Personels.Find(id);
+            personelId.durum = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

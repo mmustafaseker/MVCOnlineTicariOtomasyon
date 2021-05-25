@@ -1,0 +1,47 @@
+﻿@model List<SatisHaraket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered mt-2">
+    <tr>
+        <th>#</th>
+        <th>ÜRÜN</th>
+        <th>CARİ</th>
+        <th>PERSONEL</th>
+        <th>ADET</th>
+        <th>FİYAT</th>
+        <th>TOPLAM</th>
+        <th>TARİH</th>
+        <th>GÜNCELLE</th>
+        <th>SATIŞLAR</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SatisId</td>
+            <td>@item.Urun.UrunAd</td>
+            <td>@item.Cariler.CariAd @item.Cariler.CariSoyad</td>
+            <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>
+            <td>@item.Adet</td>
+            <td>@item.Fiyat</td>
+            <td>@item.ToplamTutar</td>
+            <td>@item.Tarih</td>
+            <td><a href="/Satis/SatisGetir/@item.SatisId" class="btn btn-outline-success"><i class="fas fa-magic"></i></a></td>
+            <td><a href="/Departman/DepartmanPersonelSatis/@item.SatisId" class="btn btn-outline-info"><i class="fas fa-expand"></i></a></td>
+
+        </tr>
+    }
+
+
+</table>
+<a href="@Url.Action("YeniSatis","Satis")" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Yeni Satis"><i class="fas fa-plus"></i></a>
+
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}
