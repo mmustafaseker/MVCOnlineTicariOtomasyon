@@ -3,20 +3,22 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<table class="table table-bordered mt-2">
-    <tr>
-        <th>#</th>
-        <th>ÜRÜN</th>
-        <th>CARİ</th>
-        <th>PERSONEL</th>
-        <th>ADET</th>
-        <th>FİYAT</th>
-        <th>TOPLAM</th>
-        <th>TARİH</th>
-        <th>GÜNCELLE</th>
-        <th>SATIŞLAR</th>
-    </tr>
+<br />
+<table id="tbl1" class="table table-bordered mt-2">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>ÜRÜN</th>
+            <th>CARİ</th>
+            <th>PERSONEL</th>
+            <th>ADET</th>
+            <th>FİYAT</th>
+            <th>TOPLAM</th>
+            <th>TARİH</th>
+            <th>GÜNCELLE</th>
+            <th>SATIŞLAR</th>
+        </tr>
+    </thead>
     @foreach (var item in Model)
     {
         <tr>
@@ -29,7 +31,7 @@
             <td>@item.ToplamTutar</td>
             <td>@item.Tarih</td>
             <td><a href="/Satis/SatisGetir/@item.SatisId" class="btn btn-outline-success"><i class="fas fa-magic"></i></a></td>
-            <td><a href="/Departman/DepartmanPersonelSatis/@item.SatisId" class="btn btn-outline-info"><i class="fas fa-expand"></i></a></td>
+            <td><a href="/Satis/SatisDetay/@item.SatisId" class="btn btn-outline-info"><i class="fas fa-expand"></i></a></td>
 
         </tr>
     }
@@ -37,6 +39,23 @@
 
 </table>
 <a href="@Url.Action("YeniSatis","Satis")" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Yeni Satis"><i class="fas fa-plus"></i></a>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+
+    $('#tbl1').dataTable({});
+
+</script>
 
 @section scripts{
     <script>

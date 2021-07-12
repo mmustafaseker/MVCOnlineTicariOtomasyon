@@ -1,0 +1,46 @@
+﻿@model SatisHaraket
+@{
+    ViewBag.Title = "SatisGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satis İşlemi Güncelleme</h2>
+<br />
+
+@using (Html.BeginForm("SatisGuncelle", "Satis", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.SatisId)
+    @Html.Label("Ürün")
+    @Html.DropDownListFor(x => x.UrunId, (List<SelectListItem>)ViewBag.urun, new { @class = "form-control" })
+    <br />
+    @Html.Label("Cariler")
+    @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.cari, new { @class = "form-control" })
+    <br />
+    @Html.Label("Personel")
+    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.personel, new { @class = "form-control" })
+    <br />
+    @Html.Label("Adet")
+    @Html.TextBoxFor(x => x.Adet, new { @class = "form-control" })
+    <br />
+    @Html.Label("Fiyat")
+    @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Toplam Tutar")
+    @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form-control" })
+    <br />
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Kaydet"><i class="fas fa-clipboard"></i></button>
+}
+
+
+@section scripts{
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}
